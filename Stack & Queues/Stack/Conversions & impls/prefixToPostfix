@@ -1,0 +1,22 @@
+#include<iostream>
+#include<string>
+#include<stack>
+using namespace std;
+string prefixToPostfix( string prefix){
+    int n = prefix.size();
+    int i = n-1;
+    stack<string>st;
+    while(i>=0){
+        if(isalnum(prefix[i])){
+            st.push(string(1,prefix[i]));
+        }else{
+            if(st.size()<2) return "Invalid!";
+            string t1 = st.top(); st.pop();
+            string t2 = st.top(); st.pop();
+            st.push(t1+t2+string(1,prefix[i]));
+        }
+ --i;
+    }
+    if(st.size()!=1) return "Invalid!";
+    return st.top();
+}
