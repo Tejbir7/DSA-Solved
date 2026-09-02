@@ -63,6 +63,6 @@ public:
         int n = nums.size();
         vector<vector<int>> dp(n, vector<int>(sum+1,-1));
         int res = f(n-1, sum, nums, dp);
-        return res == 1e9 ? -1 : res ;
+        return res >= 1e9 ? -1 : res ;
     }
 };
